@@ -1,0 +1,11 @@
+ {
+    "require": {
+        "elasticsearch/elasticsearch": "~1.0",
+        "lrucache/lrucache": "master-dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "ElasticBayes": "src/"
+        }
+     }
+ }
