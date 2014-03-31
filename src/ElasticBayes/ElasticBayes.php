@@ -22,6 +22,10 @@ class ElasticBayes {
         $this->termLRU = new \LRUCache\LRUCache(10000);
     }
 
+    /**
+     * Predict the label scores for a certain piece of text.  Scores are
+     * sorted and normalized 1-100 by default
+     */
     public function predict($data, $textField, $normalize = true) {
         $termCollection = new TermCollection($this->client, $this->termLRU, $this->labels, $data);
         $termCollection->setLabelField($this->field);
@@ -54,6 +58,10 @@ class ElasticBayes {
         return $data;
     }
 
+    /**
+     * Before we can do anything, we need to know the distribution of label
+     * counts across the whole index
+     */
     private function getLabelCounts() {
 
         $params = [
