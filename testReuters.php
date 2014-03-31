@@ -19,26 +19,22 @@ for ($i = 17; $i < 22; ++$i) {
         }
 
         $numTest += 1;
-
         $testText = $doc['body'];
-        $start = microtime(true);
+
+
         $scores = $bayes->predict($testText, 'body');
-        $total += microtime(true) - $start;
 
         $predicted = implode(",", array_keys(array_slice($scores, 0, count($doc['topics'])+5)));
         $actual = implode(",",$doc['topics']);
-
 
         if ($actual[0] == $predicted[0]) {
             $correctPredictions += 1;
         }
 
-        $ops = $numTest/$total;
-        $mem = memory_get_peak_usage(true) /1024/1024;
-        echo "$numTest:  P:[$predicted]  A:[$actual]   --  $mem Mb  --  $ops\n";
+        echo "$numTest:  P:[$predicted]  A:[$actual]\n";
     }
 
-
+    $accuracy = $correctPredictions / $numTest;
     echo "Final Accuracy: $accuracy\n";
 
 
