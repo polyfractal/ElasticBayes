@@ -188,6 +188,8 @@ This code utilizes an LRU cache to keep frequently used terms cached in memory, 
 
 With that said, the classifier can crank out predictions at an appreciable rate, even with the PHP tax.  It would be perfectly usable as an online, one-pass classifier as data streams into your system.
 
+As an interesting side-effect, since the vast majority of the computation and heavy lifting is being performed by Elasticsearch, you can effectively build an "out of core" classifier in any language, such as PHP (which normally wouldn't have a prayer at high performance ML).  It may be slower than a 100% in-memory solution, but it is much more scalable and hardware can be thrown at the problem easily.
+
 ### Classification Performance
 Classification performance is moderate to good.  While playing with the dataset, I obtained accuracies ranging from 0.56 to 0.69.
 Admittedly, I didn't spend much time fiddling...this was mostly a proof-of-concept to implement a NaiveBayes in Elasticsearch,
