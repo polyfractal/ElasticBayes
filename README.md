@@ -201,4 +201,6 @@ Classification accuracy boils down to intelligent preprocessing and normalizatio
 - Frequency filtering
 - Negation tagging
 
-Note: Accuracy is generally a poor metric to optimize, especially in an unbalanced dataset.  However, this is a proof-of-concept, not a rigorous paper, so accuracy was the easiest to calculate.  Better metrics would include AUC, micro/macro F-measures and Balanced Error Rate.
+Note: Accuracy is generally a poor metric to optimize, especially in an unbalanced dataset.  Double-especially on multi-class datasets like Reuters.  This script simply calculates the accuracy of the top prediction and label.  It does not inspect the rest of the labels, or the ordering of predictions.
+
+Since this is not a rigorous paper, accuracy was the easiest/fastest to calculate.  Better metrics would include AUC, micro/macro F-measures and Balanced Error Rate.
