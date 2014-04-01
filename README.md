@@ -40,6 +40,17 @@ Elasticsearch does this natively out of the box.  Just create an analyzer and in
 ## Testing
 Once the clssifier has been "trained", we can use it to predict the classes of new documents.  Rather than walk through all the code, I am going to show the salient Elasticsearch queries and explain their purpose.  The rest of the code should be trivial to understand, since it is just logistical plumbing.
 
+There are three fields and two sets of labels that you can potentially test on:
+
+**Labels**
+- `topics`
+- `places`
+
+**Input Fields**
+- `body`
+- `title`
+- `combined` - both `body` and `title` concatenated into a single field
+
 #### Total label counts
 This query obtains the set of labels and their counts.
 
